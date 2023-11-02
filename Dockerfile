@@ -14,7 +14,7 @@ WORKDIR /usr/bin
 #RUN  mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
 #RUN chmod +x /usr/bin/chromedriver
 
-#download chrome driver --not tested
+#download chrome driver ---not tested
 RUN CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
 wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip && \
 unzip chromedriver_linux64.zip -d /usr/bin && \
