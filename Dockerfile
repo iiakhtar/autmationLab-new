@@ -18,5 +18,5 @@ WORKDIR /app
 RUN npm install -g playwright
 
 COPY test.spec.js /app
-COPY playwright.comfig.js
+COPY playwright.comfig.js /app
 CMD ["node", "test.spec.js"]
