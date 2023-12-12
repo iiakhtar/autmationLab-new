@@ -17,6 +17,6 @@ WORKDIR /app
 #RUN npm init playwright@latest
 RUN npm install -g playwright
 
-#COPY test.js /app
-#Test
-#CMD ["node", "test.js"]
+COPY test.spec.js /app
+COPY playwright.comfig.js
+CMD ["node", "test.spec.js"]
