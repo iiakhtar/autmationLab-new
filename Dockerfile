@@ -15,7 +15,9 @@ WORKDIR /app
 
 #Install playwright
 #RUN npm init playwright@latest
-RUN npm install -g playwright
+#RUN npm install -g playwright
+RUN npm ci
+Run npx playwright install --with-deps
 
 COPY test.spec.js /app
 COPY playwright.config.js /app
