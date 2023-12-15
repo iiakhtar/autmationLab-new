@@ -14,11 +14,13 @@ WORKDIR /tests
 
 ## Set variable for clone url
 ENV REPO_URL = $(echo "https://github.com/Harishk9697/playwright-test-suite.git")
+RUN echo "Git Url: $REPO_URL"
 ## fetch repo name
 RUN REPO_NAME=$(basename -s .git $REPO_URL)
+#ARG REPO_NAME
 RUN echo "Repositor Name: $REPO_NAME"
 ## Clone the Github repository
-Run git clone --single-branch --branch main $REPO_URL
+Run git clone $REPO_URL
 
 WORKDIR /tests/$REPO_NAME
 
