@@ -10,11 +10,12 @@ COPY . /tests
 WORKDIR /tests
 
 #Install Playwright dependencies
-RUN npm install
+RUN npm ci
 
 # Install dependencies
-RUN npx @playwright/test install
+#RUN npx @playwright/test install
+#Run npx playwright install-deps
+Run npx playwright install --with-deps
 
 #RUN tests
-Run npx playwright install-deps
 RUN npx playwright test
