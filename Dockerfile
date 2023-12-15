@@ -13,14 +13,14 @@ COPY . /tests
 WORKDIR /tests
 
 ## Set variable for clone url
-ENV REPO_URL = "https://github.com/Harishk9697/playwright-test-suite.git"
+ENV REPO_URL = $(echo "https://github.com/Harishk9697/playwright-test-suite.git")
 ## fetch repo name
 RUN REPO_NAME=$(basename -s .git $REPO_URL)
-echo "Repositor Name: $REPO_NAME"
+echo "Repositor Name"
 ## Clone the Github repository
 Run git clone --single-branch --branch main $REPO_URL
 
-WORKDIR /tests/${REPO_NAME}
+WORKDIR /tests/$REPO_NAME
 
 ## Install Playwright dependencies
 RUN npm install
