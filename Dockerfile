@@ -8,7 +8,7 @@ FROM centos:7
 RUN yum -y update && yum -y install curl
 
 #Install node.js
-Run curl -sL https://rpm.nodesource.com/setup_18.x | bash -
+Run curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 RUN yum -y install nodejs
 
 
