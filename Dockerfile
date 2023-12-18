@@ -14,8 +14,10 @@ WORKDIR /tests
 
 ## Set variable for clone url
 ARG GITHUB_URL
+ARG BRANCH_NAME
 #ENV GITHUB_URL ="https://github.com/Harishk9697/playwright-test-suite.git"
 RUN echo "Git Url: $GITHUB_URL"
+RUN echo "Git Branch name: $BRANCH_NAME"
 ## Clone the Github repository
 Run git clone --single-branch --branch $BRANCH_NAME $GITHUB_URL /tests/playwright_repo
 
