@@ -17,7 +17,7 @@ ARG GITHUB_URL
 #ENV GITHUB_URL ="https://github.com/Harishk9697/playwright-test-suite.git"
 RUN echo "Git Url: $GITHUB_URL"
 ## Clone the Github repository
-Run git clone $GITHUB_URL /tests/playwright_repo
+Run git clone --single-branch --branch $BRANCH_NAME $GITHUB_URL /tests/playwright_repo
 
 WORKDIR /tests/playwright_repo
 
