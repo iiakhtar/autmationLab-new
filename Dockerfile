@@ -4,12 +4,12 @@ FROM centos:7
 #Update the package manager and install necessary dependencies
 RUN yum -y update && yum -y install curl sudo
 
-## Install Git, python and awscli
-RUN yum -y update && \
-    yum -y install epel-release &&\
-    yum -y install git python3 python3-pip && \
-    yum clean all && \
-    pip3 install awscli
+## Install Git
+RUN yum -y install git 
+
+## Install aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip && ./aws/install
 
 ## Use base image of playwright
 FROM mcr.microsoft.com/playwright:v1.24.0-focal
