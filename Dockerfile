@@ -1,14 +1,14 @@
 ## CentOS 7 base image
 FROM centos:7
 
-## Use base image of playwright
-FROM mcr.microsoft.com/playwright:v1.24.0-focal
-
 #Update the package manager and install necessary dependencies
 RUN yum -y update && yum -y install curl sudo
 
 ## Install Git
 RUN yum -y update && yum -y install git
+
+## Use base image of playwright
+FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
 USER root
 RUN mkdir /tests
