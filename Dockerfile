@@ -4,7 +4,7 @@ FROM centos:7
 #Update the package manager and install necessary dependencies
 RUN yum -y update && yum -y install curl sudo
 
-## Install Git, python
+## Install Git, python and awscli
 RUN yum -y update && \
     yum -y install epel-release &&\
     yum -y install git python3 python3-pip && \
@@ -41,7 +41,7 @@ Run npx playwright install-deps
 RUN npx playwright test
 
 ## Copy generated report to s3 bucket
-RUN aws s3 cp /tests/playwright_repo/playwright-report s3://tf-rf-scripts-spe-qaqc-bucket/output
+RUN aws s3 cp /tests/playwright_repo/playwright-report tf-rf-scripts-spe-qaqc-bucket/output
 
 ## Default command to execute playwright test
 #CMD ["npx", "playwright", "test"]
