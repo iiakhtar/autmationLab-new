@@ -32,7 +32,6 @@ WORKDIR /tests
 ## Set variable for clone url
 ARG GITHUB_URL
 ARG BRANCH_NAME
-#ENV GITHUB_URL ="https://github.com/Harishk9697/playwright-test-suite.git"
 RUN echo "Git Url: $GITHUB_URL"
 RUN echo "Git Branch name: $BRANCH_NAME"
 ## Clone the Github repository
@@ -45,7 +44,7 @@ RUN npm install
 
 ## Install dependencies
 RUN npx @playwright/test install
-Run npx playwright install-deps
+#Run npx playwright install-deps
 
 ## List the files
 RUN ls /tests/playwright_repo
