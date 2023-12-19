@@ -36,13 +36,13 @@ Run git clone --single-branch --branch $BRANCH_NAME $GITHUB_URL /tests/playwrigh
 
 WORKDIR /tests/playwright_repo
 
-## Install Playwright dependencies
-RUN npm install
-
 ## Use base image of playwright
 FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
 COPY --from=centos /tests /tests
+
+## Install Playwright dependencies
+RUN npm install
 
 ## Install dependencies
 RUN npx @playwright/test install
