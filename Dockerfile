@@ -32,9 +32,9 @@ ARG BRANCH_NAME
 RUN echo "Git Url: $GITHUB_URL"
 RUN echo "Git Branch name: $BRANCH_NAME"
 ## Clone the Github repository
-Run git clone --single-branch --branch $BRANCH_NAME $GITHUB_URL /tests
+Run git clone --single-branch --branch $BRANCH_NAME $GITHUB_URL /tests/playwright_repo
 
-WORKDIR /tests
+WORKDIR /tests/playwright_repo
 
 ## Install Playwright dependencies
 RUN npm install
@@ -49,19 +49,19 @@ RUN npx @playwright/test install
 Run npx playwright install-deps
 
 ## List the files
-RUN ls /tests
+RUN ls /tests/playwright_repo
 
 ## RUN tests
 RUN npx playwright test
 
 ## List the files
-RUN ls /tests
+RUN ls /tests/playwright_repo
 
 ## List the files
-RUN ls /tests/playwright-report
+RUN ls /tests/playwright_repo/playwright-report
 
 ## Copy generated report to s3 bucket
-RUN aws s3 cp /tests/playwright-report tf-rf-scripts-spe-qaqc-bucket/PlaywrightReports
+RUN aws s3 cp /tests/playwright_repo/playwright-report tf-rf-scripts-spe-qaqc-bucket/PlaywrightReports
 
 ## Default command to execute playwright test
 #CMD ["npx", "playwright", "test"]
