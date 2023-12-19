@@ -44,6 +44,8 @@ FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
 COPY --from=centos /tests /tests
 
+WORKDIR /tests/playwright_repo
+
 ## Install dependencies
 RUN npx @playwright/test install
 Run npx playwright install-deps
