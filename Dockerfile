@@ -1,11 +1,17 @@
 ## CentOS 7 base image
-#FROM centos:7
+FROM centos:7
 
 ## Use base image of playwright
-FROM mcr.microsoft.com/playwright:v1.24.0-focal
+#FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
 ## Update the package manager and install necessary dependencies
-RUN yum -y update && yum -y install curl sudo
+RUN yum update -y && yum install -y curl sudo
+
+## Install Node.js
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+RUN yum install -y nodejs
+#RUN curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+#RUN yum -y install nodejs
 
 ## Unzip installation
 RUN yum install -y unzip
@@ -14,7 +20,7 @@ RUN yum install -y unzip
 RUN yum install -y git 
 
 ## Install aws cli
-RUN yum install -y aws-cli
+RUN yum install -y awscli
 
 ## Install aws cli
 #RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
