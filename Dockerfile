@@ -34,7 +34,10 @@ RUN npx @playwright/test install
 Run npx playwright install-deps
 
 ## RUN tests
-#RUN npx playwright test
+RUN npx playwright test
+
+## Copy generated report to s3 bucket
+RUN aws s3 cp /tests/playwright_repo/playwright-report s3://tf-rf-scripts-spe-qaqc-bucket/output
 
 ## Default command to execute playwright test
-CMD ["npx", "playwright", "test"]
+#CMD ["npx", "playwright", "test"]
