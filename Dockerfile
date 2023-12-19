@@ -1,8 +1,11 @@
 ## CentOS 7 base image
 FROM centos:7
 
-#Update the package manager and install necessary dependencies
+## Update the package manager and install necessary dependencies
 RUN yum -y update && yum -y install curl sudo
+
+## Unzip installation
+RUN yum -y install unzip
 
 ## Install Git
 RUN yum -y install git 
