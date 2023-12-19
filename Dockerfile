@@ -8,10 +8,8 @@ FROM centos:7
 RUN yum update -y && yum install -y curl sudo
 
 ## Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
-RUN yum install -y nodejs
-#RUN curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
-#RUN yum -y install nodejs
+RUN curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+RUN yum -y install nodejs
 
 ## Unzip installation
 RUN yum install -y unzip
