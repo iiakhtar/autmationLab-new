@@ -5,10 +5,10 @@ FROM centos:7
 RUN yum -y update && yum -y install curl sudo
 
 ## Unzip installation
-RUN yum -y install unzip
+RUN yum install -y unzip
 
 ## Install Git
-RUN yum -y install git 
+RUN yum install -y git 
 
 ## Install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -40,8 +40,17 @@ RUN npm install
 RUN npx @playwright/test install
 Run npx playwright install-deps
 
+## List the files
+RUN ls /tests/playwright_repo
+
 ## RUN tests
 RUN npx playwright test
+
+## List the files
+RUN ls /tests/playwright_repo
+
+## List the files
+RUN ls /tests/playwright_repo/playwright-report
 
 ## Copy generated report to s3 bucket
 RUN aws s3 cp /tests/playwright_repo/playwright-report/index.html tf-rf-scripts-spe-qaqc-bucket/output
