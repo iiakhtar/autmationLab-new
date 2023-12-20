@@ -45,8 +45,13 @@ RUN npm install
 ## Use base image of playwright
 FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
-COPY --from=centos / /
 COPY --from=centos /tests /tests
+
+## Install python3
+RUN apt-get update && apt-get install -y python3
+
+## Install awscli
+RUN pip3 install awscli
 
 WORKDIR /tests/playwright_repo
 
