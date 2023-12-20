@@ -69,7 +69,7 @@ RUN ls /tests/playwright_repo/playwright-report
 RUN aws --version
 
 ## Copy generated report to s3 bucket
-RUN aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport
+RUN aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
 
 ## Default command to execute playwright test
 #CMD ["npx", "playwright", "test"]
