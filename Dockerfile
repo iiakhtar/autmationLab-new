@@ -15,12 +15,6 @@ RUN yum install -y unzip
 RUN yum install -y git
 
 ## Install aws cli
-RUN yum install -y awscli
-
-## Check version
-RUN aws --version
-
-## Install aws cli
 #RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 #RUN unzip awscliv2.zip && ./aws/install
 
