@@ -12,10 +12,13 @@ RUN yum -y install nodejs
 RUN yum install -y unzip
 
 ## Install Git
-RUN yum install -y git 
+RUN yum install -y git
 
 ## Install aws cli
 RUN yum install -y awscli
+
+## Check version
+RUN aws --version
 
 ## Install aws cli
 #RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -61,6 +64,9 @@ RUN ls /tests/playwright_repo
 
 ## List the files
 RUN ls /tests/playwright_repo/playwright-report
+
+## Check version
+RUN aws --version
 
 ## Copy generated report to s3 bucket
 RUN aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport
