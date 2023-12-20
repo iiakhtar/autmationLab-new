@@ -45,7 +45,7 @@ RUN npm install
 ## Use base image of playwright
 FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
-COPY --from=centos /tests /tests
+COPY --from=centos / /
 
 WORKDIR /tests/playwright_repo
 
