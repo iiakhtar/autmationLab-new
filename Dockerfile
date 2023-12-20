@@ -48,10 +48,10 @@ FROM mcr.microsoft.com/playwright:v1.24.0-focal
 COPY --from=centos /tests /tests
 
 ## Install python3
-RUN apt-get update && apt-get install -y python3
+RUN apt-get update && apt-get install -y python3 python3-pip
 
 ## Install awscli
-RUN pip3 install awscli
+RUN pip install awscli
 
 WORKDIR /tests/playwright_repo
 
