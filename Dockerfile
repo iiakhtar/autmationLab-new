@@ -46,6 +46,7 @@ RUN npm install
 FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
 COPY --from=centos / /
+COPY --from=centos /tests /tests
 
 WORKDIR /tests/playwright_repo
 
