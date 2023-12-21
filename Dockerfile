@@ -16,24 +16,31 @@ RUN yum -y install nodejs
 ## Add npm for package management
 RUN yum install -y npm
 
-RUN yum install -y \
+RUN yum install -y epel-release && \
+    yum install -y \
     libatk1.0-0 \                     
     libatk-bridge2.0-0 \                          
     libcups2 \                                    
     libdrm2 \                                     
-    libxcb1 \                                     
+    libxcb1 \
+    libXcursor \                                    
     libxkbcommon0 \                               
     libatspi2.0-0 \                               
-    libx11-6 \                                    
-    libxcomposite1 \                              
-    libxdamage1 \                                 
-    libxext6 \                                    
-    libxfixes3 \                                  
-    libxrandr2 \                                  
+    libX11-6 \                                    
+    libXcomposite1 \                              
+    libXdamage1 \                                 
+    libXext6 \                                    
+    libXfixes3 \                                  
+    libXrandr2 \                                  
     libgbm1 \                                     
     libpango-1.0-0 \                              
-    libcairo2 \                                   
-    libasound2 
+    libcairo2 \
+    libXi \
+    libXtst \
+    libXrender \
+    libXScrnSaver \                            
+    libasound2 \
+    liberation-fonts
 
 ## Unzip installation
 RUN yum install -y unzip
@@ -59,8 +66,8 @@ RUN aws --version
 #WORKDIR /tests
 
 ## Install browser
-RUN npx @playwright/test install
-
+RUN npx playwright install chromium
+ 
 ## Install dependencies
 #Run npx playwright install-deps
 
