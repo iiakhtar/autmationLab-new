@@ -37,25 +37,14 @@ WORKDIR /tests
 
 #COPY --from=centos /tests /tests
 
-WORKDIR /tests
-
 ## Install browser
 RUN npx @playwright/test install
 
 ## Install dependencies
-#Run npx playwright install-deps
+Run npx playwright install
 
 ## List the files
-RUN ls /tests/playwright_repo
-
-## RUN tests
-RUN npx playwright test
-
-## List the files
-RUN ls /tests/playwright_repo
-
-## List the files
-RUN ls /tests/playwright_repo/playwright-report
+RUN ls /tests
 
 ## Default command to execute playwright test
 CMD ["sh", "test.sh"]
