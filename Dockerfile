@@ -4,12 +4,12 @@ FROM centos:7 AS centos
 ## Update the package manager and install necessary dependencies
 RUN yum update -y && yum install -y curl sudo
 
-## Add npm for package management
-#RUN yum install -y npm
-
 ## Install Node.js
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
 RUN yum -y install nodejs
+
+## Add npm for package management
+RUN yum install -y npm
 
 ## Unzip installation
 RUN yum install -y unzip
@@ -39,9 +39,11 @@ WORKDIR /tests
 
 WORKDIR /tests
 
-## Install browser and dependencies
+## Install browser
 RUN npx @playwright/test install
-Run npx playwright install-deps
+
+## Install dependencies
+#Run npx playwright install-deps
 
 ## List the files
 RUN ls /tests/playwright_repo
