@@ -18,6 +18,8 @@ RUN yum install -y npm
 
 RUN yum install -y epel-release && \
     yum install -y \
+    glibc \
+    gtk3 \
     atk \                                      
     cups \                                   
     libdrm \                                     
@@ -35,6 +37,7 @@ RUN yum install -y epel-release && \
     pango \                              
     cairo \
     libXi \
+    dbus-libs \
     libXtst \
     libXrender \
     libXScrnSaver \                            
