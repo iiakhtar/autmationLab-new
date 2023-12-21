@@ -16,34 +16,6 @@ RUN yum -y install nodejs
 ## Add npm for package management
 RUN yum install -y npm
 
-RUN yum install -y epel-release && \
-    yum install -y \
-    glibc \
-    gtk3 \
-    atk \                                      
-    cups \                                   
-    libdrm \                                     
-    libxcb \
-    libXcursor \                                    
-    libxkbcommon \                              
-    at-spi2-atk \                              
-    libX11 \                                    
-    libXcomposite \                              
-    libXdamage \                               
-    libXext \                                    
-    libXfixes \                                  
-    libXrandr \                                  
-    libgbm \                                   
-    pango \                              
-    cairo \
-    libXi \
-    dbus-libs \
-    libXtst \
-    libXrender \
-    libXScrnSaver \                            
-    alsa-lib \
-    liberation-fonts
-
 ## Unzip installation
 RUN yum install -y unzip
 
@@ -68,10 +40,42 @@ RUN aws --version
 #WORKDIR /tests
 
 ## Install browser
+RUN npm install -g playwright
 RUN npx playwright install chromium
  
 ## Install dependencies
 #Run npx playwright install-deps
+
+RUN yum update -y && \
+    yum install -y epel-release && \
+    yum install -y \
+    git \
+    gcc-c++ \
+    make \
+    xorg-x11-server-Xvfb \
+    libXScrnSaver \
+    libXcomposite \
+    libXcursor \
+    libXi \
+    libXtst \
+    libXrandr \
+    alsa-lib \
+    libXext \
+    libXrender \
+    mesa-libGLU \
+    which \
+    curl \
+    tar \
+    fontconfig \
+    ipa-gothic-fonts \
+    xorg-x11-fonts-Type1 \
+    xorg-x11-fonts-misc \
+    wget \
+    gnupg2 \
+    iputils \
+    ca-certificates \
+    dbus-x11 \
+    liberation-fonts
 
 ## List the files
 RUN ls /tests
