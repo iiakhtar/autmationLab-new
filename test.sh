@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Set variable for clone url
 GITHUB_URL="$1"
 BRANCH_NAME="$2"
