@@ -38,14 +38,14 @@ try() {
 
 catch() {
     echo "An error occured:"
-    echo "$BASH_COMMAND"
-    echo "$@"
+    #echo "$BASH_COMMAND"
+    #echo "$@"
 }
 
 finally() {
     
-    echo "change directory"
-    cd /tests
+    #echo "change directory"
+    #cd /tests
 
     ## Copy generated report to s3 bucket
     aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
