@@ -16,6 +16,25 @@ RUN yum -y install nodejs
 ## Add npm for package management
 RUN yum install -y npm
 
+RUN yum install -y \
+    libatk1.0-0 \                     
+    libatk-bridge2.0-0 \                          
+    libcups2 \                                    
+    libdrm2 \                                     
+    libxcb1 \                                     
+    libxkbcommon0 \                               
+    libatspi2.0-0 \                               
+    libx11-6 \                                    
+    libxcomposite1 \                              
+    libxdamage1 \                                 
+    libxext6 \                                    
+    libxfixes3 \                                  
+    libxrandr2 \                                  
+    libgbm1 \                                     
+    libpango-1.0-0 \                              
+    libcairo2 \                                   
+    libasound2 
+
 ## Unzip installation
 RUN yum install -y unzip
 
@@ -33,17 +52,17 @@ RUN aws --version
 #RUN npm install
 
 ## Use base image of playwright
-FROM mcr.microsoft.com/playwright:v1.24.0-focal
+#FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
-COPY --from=centos /tests /tests
+#COPY --from=centos /tests /tests
 
-WORKDIR /tests
+#WORKDIR /tests
 
 ## Install browser
 RUN npx @playwright/test install
 
 ## Install dependencies
-Run npx playwright install-deps
+#Run npx playwright install-deps
 
 ## List the files
 RUN ls /tests
