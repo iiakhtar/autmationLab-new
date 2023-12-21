@@ -12,7 +12,7 @@ try() {
     ## Clone the Github repository
     git clone --single-branch --branch main https://github.com/Harishk9697/playwright-test-suite.git /tests/playwright_repo
     
-    echo "change directory"
+    echo "change directory to playwright repo"
     cd /tests/playwright_repo
 
     echo "list the files"
@@ -25,6 +25,9 @@ try() {
     echo "Run playwright testcases"
     ## RUN tests
     npx playwright test
+
+    echo "change directory"
+    cd /tests
     
     ## Copy generated report to s3 bucket
     aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
