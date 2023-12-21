@@ -14,9 +14,13 @@ try() {
     
     echo "change directory"
     cd /tests/playwright_repo
+
+    echo "list the files"
+    ls
     
+    echo "Install npm"
     ## Install dependencies
-    #npm install
+    npm install
     
     echo "Run playwright testcases"
     ## RUN tests
