@@ -50,4 +50,4 @@ RUN ls /tests
 RUN chmod +x test.sh
 
 ## Default command to execute playwright test
-ENTRYPOINT ["./test.sh"]
+CMD ["sh", "test.sh"]
