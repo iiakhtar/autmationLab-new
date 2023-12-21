@@ -46,5 +46,8 @@ Run npx playwright install
 ## List the files
 RUN ls /tests
 
+## Make the script executable
+RUN chmod +x test.sh
+
 ## Default command to execute playwright test
-CMD ["sh", "test.sh"]
+ENTRYPOINT ["./test.sh"]
