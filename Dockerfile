@@ -1,6 +1,11 @@
 ## CentOS 7 base image
 FROM centos:7 AS centos
 
+USER root
+RUN mkdir /tests
+COPY . /tests
+WORKDIR /tests
+
 ## Update the package manager and install necessary dependencies
 RUN yum update -y && yum install -y curl sudo
 
@@ -24,24 +29,21 @@ RUN unzip awscliv2.zip && ./aws/install
 ## Check version
 RUN aws --version
 
-USER root
-RUN mkdir /tests
-COPY . /tests
-WORKDIR /tests
-
 ## Install Playwright dependencies
 #RUN npm install
 
 ## Use base image of playwright
-#FROM mcr.microsoft.com/playwright:v1.24.0-focal
+FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
-#COPY --from=centos /tests /tests
+COPY --from=centos /tests /tests
+
+WORKDIR /tests
 
 ## Install browser
 RUN npx @playwright/test install
 
 ## Install dependencies
-Run npx playwright install
+Run npx playwright install-deps
 
 ## List the files
 RUN ls /tests
