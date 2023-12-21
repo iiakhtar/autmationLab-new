@@ -18,14 +18,13 @@ RUN yum install -y npm
 
 RUN yum install -y epel-release && \
     yum install -y \
-    atk \                  
-    atk-bridge \                       
+    atk \                                      
     cups \                                   
     libdrm \                                     
     libxcb \
     libXcursor \                                    
     libxkbcommon \                              
-    atspi \                              
+    at-spi2-atk \                              
     libX11 \                                    
     libXcomposite \                              
     libXdamage \                               
@@ -39,7 +38,7 @@ RUN yum install -y epel-release && \
     libXtst \
     libXrender \
     libXScrnSaver \                            
-    asound \
+    alsa-lib \
     liberation-fonts
 
 ## Unzip installation
