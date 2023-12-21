@@ -9,7 +9,8 @@ set -e
 
 folder_to_cleanup="/tests/playwright_repo"
 
-if [ -d "$folder_to_cleanup"]; then
+if [ -d "$folder_to_cleanup"]
+then
     echo "cleaning up folder $folder_to_cleanup"
     rm -rf "$folder_to_cleanup"
 else
@@ -43,10 +44,6 @@ catch() {
 }
 
 finally() {
-    
-    #echo "change directory"
-    #cd /tests
-
     ## Copy generated report to s3 bucket
     aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
 }
