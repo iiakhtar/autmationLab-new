@@ -41,10 +41,10 @@ echo "Run playwright testcases"
 npx playwright test
 if [ $? -ne 0 ]; then
     echo "Command npx playwright test failed"
-    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
+    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/ && echo "Copied report to s3 bucket" || echo "Copying report to s3 bucket failed"
 else
     echo "Command npx playwright test passed"
-    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
+    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/ && echo "Copied report to s3 bucket" || echo "Copying report to s3 bucket failed"
 fi
 
 #finally() {
