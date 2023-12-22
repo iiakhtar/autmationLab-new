@@ -6,8 +6,6 @@
 #echo "Git Url: $GITHUB_URL"
 #echo "Git Branch name: $BRANCH_NAME"
 
-trap "aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/ && echo sile copied to s3 bucket"
-
 cd /tests
 folder_to_cleanup="playwright_repo"
 
@@ -43,6 +41,10 @@ echo "Run playwright testcases"
 npx playwright test
 if [ $? -ne 0 ]; then
     echo "Command npx playwright test failed"
+    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
+else
+    echo "Command npx playwright test passed"
+    aws s3 cp /tests/playwright_repo/playwright-report/index.html s3://tf-rf-scripts-spe-qaqc-bucket/PlaywrightReport/
 fi
 
 #finally() {
