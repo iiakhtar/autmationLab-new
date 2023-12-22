@@ -17,7 +17,7 @@ else
     echo "$folder_to_cleanup does not exist."
 fi
 
-echo "before clone"
+echo "Cloning Git branch..."
 ## Clone the Github repository
 git clone --single-branch --branch main https://github.com/Harishk9697/playwright-test-suite.git /tests/playwright_repo
 if [ $? -ne 0 ]; then
@@ -29,14 +29,14 @@ cd /tests/playwright_repo
 echo "list the files"
 ls
 
-echo "Install npm"
+echo "Installing npm..."
 ## Install dependencies
 npm install
 if [ $? -ne 0 ]; then
     echo "Command npm install failed"
 fi
 
-echo "Run playwright testcases"
+echo "Running playwright testcases..."
 ## RUN tests
 npx playwright test
 if [ $? -ne 0 ]; then
